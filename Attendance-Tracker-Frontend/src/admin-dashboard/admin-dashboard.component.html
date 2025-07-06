@@ -1,0 +1,91 @@
+<div class="container">
+  <!-- Header section with logo and logout button -->
+  <div class="container-fluid">
+    <div class="containerflex mt-2 d-flex">
+      <!-- Logo and title -->
+      <h2>
+        <img src="https://www.logoai.com/oss/icons/2021/10/27/taBWaXsX_Kh75s7.png" height="30" weight="30" style="margin-bottom: 10px;">
+        GeoFaceTrack - Attendance Tracker
+      </h2>
+    </div>
+
+    <!-- Logout button -->
+    <div class="logoutButton mt-2">
+      <button class="btn" type="button" (click)="logout()">
+        Logout 
+        <span class="span"><i class="fa-solid fa-file-export"></i></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Section title -->
+  <h3 class="text-center">Attendance Records</h3>
+
+  <!-- Export button to download report -->
+  <button class="export mb-3" (click)="downloadExcel()">Export Report</button>
+
+  <!-- Attendance records table -->
+  <table class="table table-bordered table-striped">
+    <thead style="background-color: #12ABDB; font-size: 16px;" class="text-center">
+      <tr>
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+        <th>Employee Email</th>
+        <th>In Date</th>
+        <th>In Time</th>
+        <th>Out Date</th>
+        <th>Out Time</th>
+        <th>Total Hours</th>
+        <th>In Zone</th>
+        <th>In Photo</th>
+        <th>Out Photo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Loop through attendance records -->
+      <tr *ngFor="let record of records" style="font-size: 14px;" class="text-center">
+        <td>{{record.employeeId}}</td>
+        <td>{{record.employeeName}}</td>
+        <td>{{record.employeeEmail}}</td>
+        <td>{{record.inDate}}</td>
+        <td>{{record.inTime | timeFormat}}</td>
+        <td>{{record.outDate}}</td>
+        <td>{{record.outTime | timeFormat}}</td>
+        <td>{{record.totalHours}}</td>
+        <td>{{record.inZone}}</td>
+        <td>
+          <!-- Display in photo if available -->
+          <img *ngIf="record.inPhoto" [src]="'data:image/jpeg;base64,' + record.inPhoto" alt="In Photo"
+            style="width: 100%; height: 50px; object-fit: cover;" (click)="openImageModal(record.inPhoto)" />
+          <span *ngIf="!record.inPhoto">No Photo</span>
+        </td>
+        <td>
+          <!-- Display out photo if available -->
+          <img *ngIf="record.outPhoto" [src]="'data:image/jpeg;base64,' + record.outPhoto" alt="Out Photo"
+            style="width: 100%; height: 50px; object-fit: cover;" (click)="openImageModal(record.outPhoto)" />
+          <span *ngIf="!record.outPhoto"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination controls -->
+  <div class="pagination-controls">
+    <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Prev</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="goToNextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+
+  <!-- Modal for viewing enlarged image -->
+  <div *ngIf="isModalOpen" class="modal-overlay" (click)="closeModal()">
+    <div class="modal-content">
+      <img [src]="currentImage" alt="Image" class="modal-image" />
+      <button class="close-btn" (click)="closeModal()">
+        <span class="span"><i class="fa-solid fa-times"></i></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Loader component shown during data loading -->
+  <app-loader *ngIf="isLoading"></app-loader>
+</div>

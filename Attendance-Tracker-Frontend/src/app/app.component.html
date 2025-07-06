@@ -1,0 +1,9 @@
+<!-- Root container that listens for user activity -->
+<div 
+  (mousemove)="onUserAction()" 
+  (click)="onUserAction()" 
+  (keypress)="onUserAction()"
+>
+  <!-- Angular router outlet to load routed components -->
+  <router-outlet></router-outlet>
+</div>

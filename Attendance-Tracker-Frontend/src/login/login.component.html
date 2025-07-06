@@ -1,0 +1,106 @@
+<div class="container">
+  <!-- Main container for the login page -->
+
+  <div class="container-all">
+    <!-- Left side: Login form -->
+    <div class="col-12 col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <!-- Login title -->
+          <h2 class="text-center mb-3">Login</h2>
+
+          <!-- Display general error message -->
+          <p class="errorMessage">{{errorMessage}}</p>
+
+          <!-- Login form with Angular form submission -->
+          <form class="login-form" (ngSubmit)="onLoginEvaluate()">
+            <div class="mb-3">
+              <!-- Display username-specific error -->
+              <p class="errorMessage">{{userMessage}}</p>
+              <!-- Username input field -->
+              <label for="userName" class="form-label">UserName</label>
+              <input type="text" id="userName" class="form-control" [(ngModel)]="userName" name="userName"
+                placeholder="Enter your Username" required />
+            </div>
+
+            <div class="mb-3">
+              <!-- Display password-specific error -->
+              <p class="errorMessage">{{passwordMessage}}</p>
+              <!-- Password input field -->
+              <label for="password" class="form-label">Password</label>
+              <input type="password" id="password" class="form-control" [(ngModel)]="password" name="password"
+                placeholder="Enter your Password" required />
+            </div>
+
+            <div class="mb-3 d-flex justify-content-center">
+              <!-- Display role-specific error -->
+              <p class="errorMessage mr-2">{{roleMessage}}</p>
+
+              <!-- Employee role radio button -->
+              <div class="form-check mr-5">
+                <input class="form-check-input" type="radio" id="employee" name="role" [(ngModel)]="role"
+                  value="employee" required />
+                <label class="form-check-label" for="employee">
+                  Employee
+                </label>
+              </div>
+
+              <!-- Admin role radio button -->
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="admin" name="role" [(ngModel)]="role" value="admin"
+                  required />
+                <label class="form-check-label" for="admin">
+                  Admin
+                </label>
+              </div>
+            </div>
+
+            <!-- Submit button for login -->
+            <button type="submit" class="btn mt-2 submitBtn w-100">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side: Image and application title -->
+    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+      <div class="text-center">
+        <!-- Login illustration image -->
+        <img src="https://www.logoai.com/oss/icons/2021/10/27/taBWaXsX_Kh75s7.png"
+          alt="Login Image" class="img-fluid" />
+        <!-- Application name -->
+        <h4 class="text-dark mt-4">GeoFaceTrack - Attendance Tracker</h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loader component shown when isLoading is true -->
+  <app-loader *ngIf="isLoading"></app-loader>
+
+  <!-- Help section with modal -->
+  <div style="margin-right: -5%;">
+    <!-- Help button to open the modal -->
+    <button (click)="openModal()" class="btn btn-primary p-3 ml-4">
+      Help <span class="span"><i class="fas fa-users"></i></span>
+    </button>
+
+    <!-- Modal window shown when showModal is true -->
+    <div *ngIf="showModal" class="modal">
+      <div class="modal-content">
+        <!-- Close button for modal -->
+        <span class="close" (click)="closeModal()">&times;</span>
+
+        <!-- Contact information for different locations -->
+        <h2><span class="span" style="color: white;"><i class="fa-solid fa-headset"></i></span> Reach out to us on Teams or Outlook</h2>
+        <h3>Bangalore</h3>
+        <p class="emails">admin.bangalore&#64;vg.com</p>
+        <h3>Mumbai</h3>
+        <p class="emails">admin.mumbai&#64;vg.com</p>
+        <h3>Hyderabad</h3>
+        <p class="emails">admin.hyderabad&#64;vg.com</p>
+        <h3>Pune</h3>
+        <p class="emails">admin.pune&#64;vg.com</p>
+      </div>
+    </div>
+  </div>
+</div>

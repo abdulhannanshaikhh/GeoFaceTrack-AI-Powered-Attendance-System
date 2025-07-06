@@ -1,0 +1,230 @@
+/* Reset default spacing and box model */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Full height and width for body and html */
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+/* Main container layout */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Left side menu styling */
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26%;
+  height: 100%;
+  background-color: #12ABDB;
+  padding: 30px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Menu title styling */
+.menu h5 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+/* Menu list styling */
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: auto;
+}
+
+/* Menu item styling */
+.menu li {
+  padding: 20px 0;
+  margin: 10px 0;
+  background-color: black;
+  color: #12ABDB;
+  border-radius: 4%;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Logout button styling */
+.menu button {
+  padding: 10px 20px;
+  background-color: transparent;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  align-self: center;
+}
+
+/* Hover effect for logout button */
+.menu button:hover {
+  background-color: black;
+  color: #12ABDB;
+}
+
+/* Right side page content */
+.page {
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  margin-left: 10px;
+  margin-right: -10%;
+}
+
+/* Profile section container */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Profile card styling */
+.profile-card {
+  background-color: black;
+  color: #12ABDB;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Profile title styling */
+.profile-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: skyblue;
+}
+
+/* Profile details layout */
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Row layout for profile details */
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Individual detail block */
+.profile-detail {
+  margin-bottom: 20px;
+  width: 48%;
+}
+
+/* Label styling */
+.profile-detail label {
+  font-weight: bold;
+}
+
+/* Value styling */
+.profile-detail span {
+  margin-left: 10px;
+  color: white;
+}
+
+/* Info container layout */
+.containerInfo {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+}
+
+/* Left-aligned section */
+.start {
+  margin-right: auto;
+}
+
+/* Right-aligned section */
+.end {
+  text-align: center;
+}
+
+/* Button container spacing */
+.buttons {
+  margin-top: 40px;
+}
+
+/* Table row hover effect */
+.record {
+  cursor: pointer;
+}
+
+.record:hover {
+  background-color: rgb(222, 221, 221);
+}
+
+/* Mark In/Out button container */
+.markInContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+}
+
+/* General button hover effect */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Mark In/Out button styling */
+.btn-mark {
+  background-color: #12ABDB;
+  color: black;
+}
+
+.mark button {
+  background-color: #12ABDB;
+}
+
+/* Pagination controls layout */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 55%;
+  margin-bottom: 6px;
+}
+
+/* Pagination button styling */
+.pagination-controls button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+/* Pagination button hover effect */
+.pagination-controls button :hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,119 @@
+/* Reset default margin and padding, and set full height and width */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Main container: centers content both vertically and horizontally */
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Inner container: 80% size with centered content and border */
+.container-all {
+  height: 80%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #12ABDB;
+}
+
+/* Ensures card body takes full width */
+.card-body {
+  width: 100%;
+}
+
+/* Card styling: full width, no border except right side */
+.card {
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-right: 2px solid #12ABDB;
+}
+
+/* Heading level 2: larger font and spacing below */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Heading level 4: bold, slightly smaller, with letter spacing */
+h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Image styling: responsive with max width */
+img {
+  max-width: 70%;
+  height: auto;
+}
+
+/* Error message styling: centered and colored */
+.errorMessage {
+  display: flex;
+  justify-content: center;
+  color: #12ABDB;
+}
+
+/* Custom color for radio buttons */
+input[type="radio"] {
+  accent-color: #0070AD;
+}
+
+/* Modal overlay: full screen with semi-transparent background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal content box: centered with padding and custom colors */
+.modal-content {
+  background-color: black;
+  color: #12ABDB;
+  padding: 20px;
+  border-radius: 5px;
+  width: 50%;
+  text-align: center;
+}
+
+/* Email text inside modal: white color */
+.emails {
+  color: white;
+}
+
+/* Close button for modal: positioned top-right */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Button styling: primary color with hover effect */
+.btn {
+  background-color: #12ABDB;
+  color: black;
+}
+
+/* Button hover effect: invert colors */
+.btn:hover {
+  background-color: black;
+  color: #12ABDB;
+}

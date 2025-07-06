@@ -1,0 +1,17 @@
+<div class="camera-container">
+  <div class="camera-modal">
+    
+    <!-- Video Feed: Displays the live camera stream -->
+    <video #videoElement width="100" height="240" autoplay></video>
+
+    <!-- Buttons for capturing image and closing the camera -->
+    <div>
+      <!-- Capture the current frame from the video feed -->
+      <button class="btn btn-primary mb-2" (click)="captureImage()">Capture Image</button>
+
+      <!-- Close the camera modal -->
+      <button class="btn btn-info mb-2" (click)="closeCamera()">Close</button>
+    </div>
+    
+  </div>
+</div>

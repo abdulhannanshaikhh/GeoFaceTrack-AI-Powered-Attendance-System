@@ -1,0 +1,178 @@
+<div class="container">
+  <!-- Left side menu (20%) -->
+  <div class="menu">
+    <!-- App logo and title -->
+    <h5 style="font-weight: bold;">
+      <img src="https://www.logoai.com/oss/icons/2021/10/27/taBWaXsX_Kh75s7.png"
+        height="20" weight="20" style="margin-bottom: 10px; padding: 1px; border-radius: 360px;">
+      GeoFaceTrack
+    </h5>
+
+    <!-- Navigation menu -->
+    <ul>
+      <li (click)="showDashboard()">
+        <span class="span"><i class="fa-solid fa-bars-progress"></i></span> Dashboard
+      </li>
+      <li (click)="showProfile()">
+        <span class="span"><i class="fa-solid fa-address-card"></i></span> UserProfile
+      </li>
+    </ul>
+
+    <!-- Logout button -->
+    <button type="button" (click)="logout()">
+      <span class="span"><i class="fa-solid fa-file-export"></i></span> Logout
+    </button>
+  </div>
+
+  <!-- Right side content/page (80%) -->
+  <div class="page">
+
+    <!-- Dashboard Section -->
+    <div *ngIf="isDashboardVisible">
+      <div class="containerInfo">
+        <div class="start">
+          <!-- Current month and year -->
+          <h5>{{month}} - {{year}}</h5>
+          <h6>Attendance Report</h6>
+        </div>
+
+        <div class="end">
+          <!-- User info and profile shortcut -->
+          <h5 (click)="showProfile()" style="cursor: pointer;">
+            <span class="span" style="color: #12ABDB;"><i class="fas fa-user"></i></span> {{empName}}
+          </h5>
+          <h6>{{empPosition}} - {{empLocation}}</h6>
+        </div>
+      </div>
+
+      <!-- Mark In/Out Section -->
+      <div class="markInContainer">
+        <div class="mark">
+          <button type="button" class="btn btn-mark pl-4 pr-4 pt-2 pb-2" (click)="onMarkIn()">
+            <span class="span"><i class="fa-solid fa-person-walking"></i></span> Mark In Time
+          </button>
+        </div>
+
+        <!-- Display messages and errors -->
+        <div class="errorDiv">
+          <div><h6 class="text-center p-1" style="color: green">{{message}}</h6></div>
+          <div><h6 class="text-center p-1" style="color: red">{{faceRecognitionError}}</h6></div>
+          <div><h6 class="text-center p-1" style="color: red">{{errorMessage}}</h6></div>
+        </div>
+
+        <div class="mark">
+          <button type="button" class="btn btn-mark pl-4 pr-4 pt-2 pb-2" (click)="onMarkOut()">
+            Mark Out Time <span class="span"><i class="fa-solid fa-person-walking-arrow-right"></i></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Camera component for face capture -->
+      <div *ngIf="showCamera">
+        <app-camera (imageCaptured)="onImageCaptured($event)" (closeCameraModal)="closeCameraModal()"></app-camera>
+      </div>
+
+      <br>
+      <div>
+        <h6 class="text-center">Total 6hrs Must Meet</h6>
+        <hr class="mt-2 mb-3">
+      </div>
+
+      <!-- Attendance records table -->
+      <table class="table table-bordered table-striped">
+        <thead style="background-color: #12ABDB; font-size: 16px;" class="text-center">
+          <tr>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Employee Email</th>
+            <th>In Date</th>
+            <th>In Time</th>
+            <th>Out Date</th>
+            <th>Out Time</th>
+            <th>Total Hours</th>
+            <th>In Zone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Loop through attendance records -->
+          <tr *ngFor="let record of records" style="font-size: 14px;" class="text-center record">
+            <td>{{record.employeeId}}</td>
+            <td>{{record.employeeName}}</td>
+            <td>{{record.employeeEmail}}</td>
+            <td>{{record.inDate}}</td>
+            <td>{{record.inTime | timeFormat }}</td>
+            <td>{{record.outDate}}</td>
+            <td>{{record.outTime | timeFormat}}</td>
+            <td [innerHTML]="record.totalHours | hourValidation"></td>
+            <td>{{record.inZone}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Pagination controls -->
+      <div class="pagination-controls">
+        <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">&#60;&#60;&#60;</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button (click)="goToNextPage()" [disabled]="currentPage === totalPages">&#62;&#62;&#62;</button>
+      </div>
+    </div>
+
+    <!-- UserProfile Section -->
+    <div *ngIf="!isDashboardVisible">
+      <div class="profile-container">
+        <div class="profile-card">
+          <h2 class="profile-title" style="color: white"> User Profile</h2>
+          <h4 style="color: white;"> {{employee.employeeName}} </h4>
+          <br><hr><br>
+
+          <!-- Profile details -->
+          <div class="profile-details">
+            <div class="profile-row">
+              <div class="profile-detail">
+                <label>Employee ID:</label>
+                <span>{{employee.employeeId}}</span>
+              </div>
+              <div class="profile-detail">
+                <label>Employee Name:</label>
+                <span>{{employee.employeeName}}</span>
+              </div>
+            </div>
+            <div class="profile-row">
+              <div class="profile-detail">
+                <label>Employee Email:</label>
+                <span>{{employee.employeeEmail}}</span>
+              </div>
+              <div class="profile-detail">
+                <label>Office Location:</label>
+                <span>{{employee.officeLocation}}</span>
+              </div>
+            </div>
+            <div class="profile-row">
+              <div class="profile-detail">
+                <label>Role:</label>
+                <span>{{employee.position}}</span>
+              </div>
+              <div class="profile-detail">
+                <label>Status:</label>
+                <span>{{employee.status}}</span>
+              </div>
+            </div>
+            <div class="profile-row">
+              <div class="profile-detail">
+                <label>Corp Id:</label>
+                <span>{{employee.corpId}}</span>
+              </div>
+              <div class="profile-detail">
+                <label>Joining Date:</label>
+                <span>{{employee.joiningDate}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loader shown during data fetch or processing -->
+    <app-loader *ngIf="isLoading"></app-loader>
+  </div>
+</div>

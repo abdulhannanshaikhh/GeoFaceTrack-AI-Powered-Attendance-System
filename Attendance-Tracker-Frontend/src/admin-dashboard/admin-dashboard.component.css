@@ -1,0 +1,129 @@
+/* Reset default spacing and box model for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure full height and width for the page */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Center container horizontally */
+.container {
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+/* Fluid container with space between elements */
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 auto;
+  height: 100%;
+  width: 100%;
+}
+
+/* Button styling */
+.btn {
+  background-color: #12ABDB;
+  padding: 5px 20px;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: center;
+}
+
+/* Button hover effect */
+.btn:hover {
+  background-color: black;
+  color: #12ABDB;
+}
+
+/* Export button styling */
+.export {
+  display: flex;
+  margin-left: auto;
+  margin-bottom: 5px;
+  background-color: black;
+  color: #12ABDB;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Modal overlay: covers entire screen with dark background */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* On top of other content */
+}
+
+/* Modal content box */
+.modal-content {
+  background-color: black;
+  padding: 20px;
+  text-align: center;
+  width: 40%;
+  height: 70%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Image inside modal: scales to fit */
+.modal-image {
+  width: 100%;
+  height: auto;
+  max-height: 80vh; /* Limit height */
+  object-fit: contain;
+}
+
+/* Close button inside modal */
+.close-btn {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  padding: 0px;
+  background-color: transparent;
+  color: #12ABDB;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* Pagination controls container */
+.pagination-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Pagination buttons inside container */
+.container .pagination-controls button {
+  background-color: #12ABDB;
+  color: black;
+  padding: 2px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+/* Hover effect for pagination buttons */
+.container .pagination-controls button:hover {
+  opacity: 0.9;
+}
