@@ -1,6 +1,5 @@
 # 🚀 GeoFaceTrack – AI-Powered Smart Attendance System
 
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Built With](https://img.shields.io/badge/Built%20With-Spring%20Boot%20%7C%20Angular%20%7C%20Python%20%7C%20AI-blueviolet)
 
 > GeoFaceTrack is a secure, real-time, AI-driven smart attendance system that integrates deep learning-based facial recognition with anti-spoofing, GPS, IP/Wi-Fi verification, and intelligent validation logic for tamper-proof attendance tracking.
@@ -17,8 +16,8 @@ The system is modular and scalable — making it ideal for educational instituti
 
 ## 🧠 Key Features
 
-- 🔍 **Facial Recognition** – Identity verification using FaceNet & MTCNN models.
-- 🛡️ **Anti-Spoofing** – Detects fake inputs like photos/videos/masks using liveness checks.
+- 🔍 **Facial Recognition** – Identity verification using pretrained deep learning models.
+- 🛡️ **Anti-Spoofing** – Detects fake inputs like fake photos/masks using liveness checks.
 - 📍 **GPS Location Validation** – Ensures attendance only within predefined geo-locations.
 - 🌐 **Wi-Fi/IP Address Check** – Prevents spoofing by validating network identity.
 - 📦 **Conditional Data Storage** – Data is stored only after successful biometric & location validation.
@@ -30,69 +29,14 @@ The system is modular and scalable — making it ideal for educational instituti
 
 ## 🏗️ Tech Stack
 
-| Layer          | Technology                                 |
+| Layer          | Technology                                  |
 |----------------|---------------------------------------------|
 | **Frontend**   | Angular 19, TypeScript                      |
-| **Backend**    | Spring Boot (Java 17), Spring Security, JWT|
+| **Backend**    | Spring Boot (Java 17), Spring Security, JWT |
 | **Database**   | MySQL                                       |
 | **ML API**     | Python, Flask, OpenCV, face_recognition     |
-| **AI Models**  | FaceNet, MTCNN                              |
-| **Others**     | GPS, IP Geolocation, Bcrypt, JWT            |
-
----
-
-## 📁 Project Structure
-
-```
-GeoFaceTrack/
-🔹 frontend/             # Angular web client
-🔹 backend/              # Spring Boot REST API
-🔹 ml-api/               # Flask-based Python ML service
-🔹 README.md             # Project documentation
-```
-
----
-
-## 🚀 Getting Started
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-username/GeoFaceTrack.git
-cd GeoFaceTrack
-```
-
-### 2. Run ML API (Python + Flask)
-
-```bash
-cd ml-api
-pip install -r requirements.txt
-python app.py
-```
-
-### 3. Configure & Run Backend (Spring Boot + MySQL)
-
-- Open `backend/` in IntelliJ or Eclipse.
-- Set up your database and update `application.properties`:
-
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/geofacetrack
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-jwt.secret=your_jwt_secret
-```
-
-- Run the Spring Boot application.
-
-### 4. Run Frontend (Angular)
-
-```bash
-cd frontend
-npm install
-ng serve
-```
-
-Visit the app at `http://localhost:4200`.
+| **AI Models**  | InsightFace                                 |
+| **Others**     | GPS, IP Geolocation                         |
 
 ---
 
@@ -117,6 +61,13 @@ Visit the app at `http://localhost:4200`.
 [Python ML API (Face + Anti-Spoofing)]
      ↑
 [GPS + Wi-Fi/IP Validation Layer]
+     ↓
+[Angular Frontend]
+     ↓
+[Spring Boot Backend]
+     ↓
+[MySQL Database]↔ [Angular Frontend]
+
 ```
 
 ---
@@ -143,26 +94,9 @@ We welcome contributions from the GitHub community:
 
 ---
 
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 ## 🙏 Acknowledgements
 
-- Open Source Libraries: `face_recognition`, `OpenCV`, `MTCNN`, `Flask`, `Spring Boot`, `Angular`
+- Open Source Libraries: `face_recognition`, `OpenCV`, `InsightFace`, `Flask`, `Spring Boot`, `Angular`
 - Support from faculty and peers during development
 
 ---
-
-## 📬 Contact
-
-**Abdul Hannan**  
-📧 [abdulhannan.shaikhh@gmail.com](mailto:abdulhannan.shaikhh@gmail.com)  
-🔗 [LinkedIn](https://www.linkedin.com/in/abdulhannan-shaikh/)  
-💻 [GitHub](https://github.com/abdulhannan-99)
-
----
-
-**GeoFaceTrack – Redefining attendance with AI, biometrics, and location intelligence.**
