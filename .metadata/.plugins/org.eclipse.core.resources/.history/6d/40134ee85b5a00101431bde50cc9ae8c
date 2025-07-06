@@ -1,0 +1,84 @@
+package com.gft.springboot.service;
+
+import java.time.LocalDate;
+import java.util.Base64;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gft.springboot.model.AttendanceRecord;
+import com.gft.springboot.repository.AttendanceRecordsRepository;
+
+@Service
+public class AttendanceRecordsServiceImpl implements AttendanceRecordsService {
+
+    @Autowired
+    private AttendanceRecordsRepository attendanceRecordsRepository;
+
+    // Retrieves all attendance records from the database
+    public List<AttendanceRecord> viewAllRecords() {
+        List<AttendanceRecord> records = attendanceRecordsRepository.findAll();
+        return records;
+    }
+
+    // Retrieves attendance records for a specific employee ID
+    public List<AttendanceRecord> viewRecordsById(int employeeId) {
+        return attendanceRepordsRepository.findByEmployeeId(employeeId);
+    }
+
+    // Retrieves a specific attendance record by employee ID and check-in date
+    public AttendanceRecord viewRecordsByIdAndInDate(int employeeId, LocalDate inDate) {
+        return attendanceRecordsRepository.findByEmployeeIdAndInDate(employeeId, inDate);
+    }
+
+    // Retrieves all attendance records ordered by check-in date and time descending
+    public List<AttendanceRecord> viewRecordsOrderByInDateDescAndInTimeDesc() {
+        List<AttendanceRecord> records = attendanceRecordsRepository.findRecordsOrderedByInDateDescAndInTimeDesc();
+        return records;
+    }
+
+    // Retrieves attendance records for a specific employee ID ordered by check-in date descending
+    public List<AttendanceRecord> findRecordsByEmployeeIdOrderedByInDateDesc(int employeeId) {
+        return attendanceRecordsRepository.findRecordsByEmployeeIdOrderedByInDateDesc(employeeId);
+    }
+
+    // Decodes a Base64-encoded image string into a byte array
+    public byte[] decodeBase64(String base64String) {
+        if (base64String != null && base64String.startsWith("data:image")) {
+            base64String = base64String.split(",")[1]; // Extracts only the Base64 part
+        }
+        return Base64.getDecoder().decode(base64String); // Decodes to byte[]
+    }
+
+    // Adds a new attendance record to the database
+    public AttendanceRecord addRecords(AttendanceRecord attendanceRecord) {
+        if (attendanceRecord.getInPhoto() != null) {
+            byte[] inPhoto = attendanceRecord.getInPhoto();
+            attendanceRecord.setInPhoto(inPhoto); // Stores the byte[] for the image
+        }
+        return attendanceRecordsRepository.save(attendanceRecord);
+    }
+
+    // Updates an existing attendance record based on employee ID and check-in date
+    public AttendanceRecord updateRecordByDate(int employeeId, LocalDate inDate, AttendanceRecord attendanceRecord) {
+        AttendanceRecord record = attendanceRecordsRepository.findByEmployeeIdAndInDate(employeeId, inDate);
+
+        if (record == null) {
+            System.out.println("Error Occurred");
+        }
+
+        // Updates the record's outDate, outTime, totalHours, and inZone
+        record.setOutDate(attendanceRecord.getOutDate());
+        record.setOutTime(attendanceRecord.getOutTime());
+        record.setTotalHours(attendanceRecord.getTotalHours());
+        record.setInZone(attendanceRecord.getInZone());
+
+        // Updates the outPhoto if provided
+        if (attendanceRecord.getOutPhoto() != null) {
+            record.setOutPhoto(attendanceRecord.getOutPhoto());
+        }
+
+        return attendanceRecordsRepository.save(record);
+    }
+}

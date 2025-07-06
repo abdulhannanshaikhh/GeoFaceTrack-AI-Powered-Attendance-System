@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.gft.springboot.model.Employee"/>
+    <fullyQualifiedTypeName name="com.gft.springboot.model.Login"/>
+    <fullyQualifiedTypeName name="com.gft.springboot.model.AttendanceRecord"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="com.gft.springboot.model.Admin"/>
+    <fullyQualifiedTypeName name="com.gft.springboot.repository.AttendanceRecordsRepository"/>
+</qualifiedTypeNameHistroy>

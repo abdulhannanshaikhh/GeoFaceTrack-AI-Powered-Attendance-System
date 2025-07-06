@@ -1,0 +1,5 @@
+package com.gft.springboot.model;
+
+public class Login {
+
+}

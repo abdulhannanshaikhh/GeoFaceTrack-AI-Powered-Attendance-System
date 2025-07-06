@@ -1,0 +1,5 @@
+package com.gft.springboot.controller;
+
+public class LoginController {
+
+}

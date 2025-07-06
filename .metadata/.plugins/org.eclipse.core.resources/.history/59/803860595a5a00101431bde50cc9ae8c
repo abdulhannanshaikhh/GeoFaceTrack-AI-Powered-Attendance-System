@@ -1,0 +1,5 @@
+package com.gft.springboot.service;
+
+public class LoginServiceImpl {
+
+}

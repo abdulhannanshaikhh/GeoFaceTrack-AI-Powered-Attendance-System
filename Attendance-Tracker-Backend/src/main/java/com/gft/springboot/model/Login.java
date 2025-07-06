@@ -1,0 +1,27 @@
+package com.gft.springboot.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "attendancelogin")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Login {
+
+    @Id
+    @Column(name = "corp_id")
+    private String corpId; // Corporate ID used as the primary key for login
+
+    @Column(name = "employee_id")
+    private int employeeId; // ID of the employee associated with the login
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id", insertable = false, updatable = false)
+    private Employee employee; // Reference to the associated Employee entity
+}
