@@ -15,7 +15,7 @@ import { AttendanceRecords } from '../attendance-records';
 })
 export class DashboardComponent implements OnInit {
   // === UI State Variables ===
-  title: string = (document.title = 'VG - Dashboard');
+  title: string = (document.title = 'GeoFaceTrack - Dashboard');
   isDashboardVisible: boolean = true;
   isLoading: boolean = false;
   showCamera: boolean = false;

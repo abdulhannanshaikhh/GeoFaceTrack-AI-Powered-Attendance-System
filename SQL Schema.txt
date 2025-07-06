@@ -1,0 +1,45 @@
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_name VARCHAR(255) NOT NULL,
+    job_code VARCHAR(255) NOT NULL,
+    position VARCHAR(255) NOT NULL,
+    team VARCHAR(255),
+    office_location VARCHAR(255),
+    employee_email VARCHAR(255) NOT NULL,
+    joining_date DATE NOT NULL,
+    corp_id VARCHAR(255),
+    status VARCHAR(255),
+    address VARCHAR(255) NOT NULL,
+    gender CHAR(1) NOT NULL,
+    qualification VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE attendancelogin (
+    corp_id VARCHAR(255) PRIMARY KEY,
+    employee_id INT,
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+);
+
+
+CREATE TABLE admin (
+    admin_id INT PRIMARY KEY,
+    password VARCHAR(255)
+);
+
+
+CREATE TABLE attendance_records (
+    records_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT,
+    employee_name VARCHAR(255),
+    employee_email VARCHAR(255),
+    in_date DATE,
+    in_time TIME,
+    out_date DATE,
+    out_time TIME,
+    in_photo BLOB,
+    out_photo BLOB,
+    total_hours FLOAT,
+    in_zone VARCHAR(255),
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+);

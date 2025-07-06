@@ -11,7 +11,7 @@ import { AttendancerecordService } from '../attendancerecord.service';
 })
 export class AdminDashboardComponent implements OnInit {
   // Set the page title
-  title: string = document.title = 'VG - Admin Dashboard';
+  title: string = document.title = 'GFT - Admin Dashboard';
 
   // UI state variables
   isLoading: boolean = false;
