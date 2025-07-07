@@ -1,6 +1,6 @@
 # 🚀 GeoFaceTrack – AI-Powered Smart Attendance System
 
-![Built With](https://img.shields.io/badge/Built%20With-Spring%20Boot%20%7C%20Angular%20%7C%20Python%20%7C%20AI-blueviolet)
+![Built With](https://img.shields.io/badge/Built%20With-Spring%20Boot%20%7C%20Angular%20%7C%20Python%20%7C%20AI%20%7C%20ML-blueviolet)
 
 > GeoFaceTrack is a secure, real-time, AI-driven smart attendance system that integrates deep learning-based facial recognition with anti-spoofing, GPS, IP/Wi-Fi verification, and intelligent validation logic for tamper-proof attendance tracking.
 
